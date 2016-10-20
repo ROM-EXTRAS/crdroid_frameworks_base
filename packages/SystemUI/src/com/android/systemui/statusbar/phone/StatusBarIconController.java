@@ -94,6 +94,8 @@ public class StatusBarIconController extends StatusBarIconList implements Tunabl
     private ImageView mLeftWeatherImageView;
     private int mStatusBarWeatherEnabled;
 
+    private TextView mCarrierLabel;
+
     private int mIconSize;
     private int mIconHPadding;
 
@@ -164,6 +166,7 @@ public class StatusBarIconController extends StatusBarIconList implements Tunabl
         mWeatherLeft = (TextView) statusBar.findViewById(R.id.left_weather_temp);
         mWeatherImageView = (ImageView) statusBar.findViewById(R.id.weather_image);
         mLeftWeatherImageView = (ImageView) statusBar.findViewById(R.id.left_weather_image);
+        mCarrierLabel = (TextView) statusBar.findViewById(R.id.statusbar_carrier_text);
         loadDimens();
 
         mBatteryLevelView = (BatteryLevelTextView) statusBar.findViewById(R.id.battery_level);
@@ -590,6 +593,13 @@ public class StatusBarIconController extends StatusBarIconList implements Tunabl
             mWeatherImageView.setImageTintList(ColorStateList.valueOf(mIconTint));
             mLeftWeatherImageView.setImageTintList(ColorStateList.valueOf(mIconTint));
         }
+        if (Settings.System.getIntForUser(mContext.getContentResolver(),
+                Settings.System.STATUS_BAR_CARRIER_COLOR,
+                mContext.getResources().getColor(R.color.status_bar_clock_color),
+                UserHandle.USER_CURRENT) == mContext.getResources().
+                getColor(R.color.status_bar_clock_color)) {
+            mCarrierLabel.setTextColor(mIconTint);
+        }
     }
 
     public void appTransitionPending() {
@@ -642,6 +652,7 @@ public class StatusBarIconController extends StatusBarIconList implements Tunabl
         loadDimens();
         mNotificationIconAreaController.onDensityOrFontScaleChanged(mContext);
         updateClock();
+        updateCarrier();
         updateBatteryLevelText();
         for (int i = 0; i < mStatusIcons.getChildCount(); i++) {
             View child = mStatusIcons.getChildAt(i);
@@ -657,6 +668,10 @@ public class StatusBarIconController extends StatusBarIconList implements Tunabl
             child.setLayoutParams(lp);
         }
         scaleBatteryMeterViews(mContext);
+    }
+
+    private void updateCarrier() {
+        FontSizeUtils.updateFontSize(mCarrierLabel, R.dimen.status_bar_carrier_height);
     }
 
     private void updateClock() {
