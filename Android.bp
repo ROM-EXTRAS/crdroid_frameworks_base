@@ -404,7 +404,7 @@ java_defaults {
         generate_get_transaction_name: true,
     },
 
-    srcs: ["core/java/**/*.logtags"],
+    srcs: ["core/java/**/*.logtags", "core/java/**/*.aidl"],
 
     exclude_srcs: [
         // See comment on framework-atb-backward-compatibility module below
