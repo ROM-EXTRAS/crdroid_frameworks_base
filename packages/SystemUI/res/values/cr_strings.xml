@@ -276,4 +276,8 @@
     <string name="quick_settings_navbar_on">Navigation on</string>
     <string name="quick_settings_navbar_changed_off">Navigation turned off</string>
     <string name="quick_settings_navbar_changed_on">Navigation turned on</string>
+
+    <!-- ADB over network QS tile -->
+    <string name="quick_settings_network_adb_label">ADB over network</string>
+    <string name="quick_settings_network_adb_no_network">no network</string>
 </resources>
