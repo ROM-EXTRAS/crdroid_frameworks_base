@@ -45,6 +45,7 @@ import com.android.systemui.qs.tiles.DndTile;
 import com.android.systemui.qs.tiles.FlashlightTile;
 import com.android.systemui.qs.tiles.FPSInfoTile;
 import com.android.systemui.qs.tiles.GamingModeTile;
+import com.android.systemui.qs.tiles.GestureAnywhereTile;
 import com.android.systemui.qs.tiles.HeadsUpTile;
 import com.android.systemui.qs.tiles.HotspotTile;
 import com.android.systemui.qs.tiles.LocaleTile;
@@ -125,6 +126,7 @@ public class QSFactoryImpl implements QSFactory {
     private final Provider<CPUInfoTile> mCPUInfoTileProvider;
     private final Provider<FPSInfoTile> mFPSInfoTileProvider;
     private final Provider<GamingModeTile> mGamingModeTileProvider;
+    private final Provider<GestureAnywhereTile> mGestureAnywhereTileProvider;
     private final Provider<SmartPixelsTile> mSmartPixelsTileProvider;
     private final Provider<RebootTile> mRebootTileProvider;
     private final Provider<SoundSearchTile> mSoundSearchTileProvider;
@@ -177,6 +179,7 @@ public class QSFactoryImpl implements QSFactory {
             Provider<CPUInfoTile> cpuInfoTileProvider,
             Provider<FPSInfoTile> fpsInfoTileProvider,
             Provider<GamingModeTile> gamingModeTileProvider,
+            Provider<GestureAnywhereTile> gestureAnywhereTileProvider,
             Provider<SmartPixelsTile> smartPixelsTileProvider,
             Provider<RebootTile> rebootTileProvider,
             Provider<SoundSearchTile> soundSearchTileProvider,
@@ -225,6 +228,7 @@ public class QSFactoryImpl implements QSFactory {
         mCPUInfoTileProvider = cpuInfoTileProvider;
         mFPSInfoTileProvider = fpsInfoTileProvider;
         mGamingModeTileProvider = gamingModeTileProvider;
+        mGestureAnywhereTileProvider = gestureAnywhereTileProvider;
         mSmartPixelsTileProvider = smartPixelsTileProvider;
         mRebootTileProvider = rebootTileProvider;
         mSoundSearchTileProvider = soundSearchTileProvider;
@@ -323,6 +327,8 @@ public class QSFactoryImpl implements QSFactory {
                 return mFPSInfoTileProvider.get();
             case "gaming":
                 return mGamingModeTileProvider.get();
+            case "gesture_anywhere":
+                return mGestureAnywhereTileProvider.get();
             case "smartpixels":
                 return mSmartPixelsTileProvider.get();
             case "reboot":
