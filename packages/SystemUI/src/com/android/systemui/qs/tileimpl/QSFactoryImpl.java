@@ -58,6 +58,7 @@ import com.android.systemui.qs.tiles.NightDisplayTile;
 import com.android.systemui.qs.tiles.PowerMenuTile;
 import com.android.systemui.qs.tiles.PowerShareTile;
 import com.android.systemui.qs.tiles.ProfilesTile;
+import com.android.systemui.qs.tiles.PulseTile;
 import com.android.systemui.qs.tiles.ReadingModeTile;
 import com.android.systemui.qs.tiles.RebootTile;
 import com.android.systemui.qs.tiles.RotationLockTile;
@@ -135,6 +136,7 @@ public class QSFactoryImpl implements QSFactory {
     private final Provider<LocaleTile> mLocaleTileProvider;
     private final Provider<MonoToggleTile> mMonoToggleTileProvider;
     private final Provider<NavBarTile> mNavBarTileProvider;
+    private final Provider<PulseTile> mPulseTileProvider;
 
     private final Lazy<QSHost> mQsHostLazy;
 
@@ -187,7 +189,8 @@ public class QSFactoryImpl implements QSFactory {
             Provider<CompassTile> compassTileProvider,
             Provider<LocaleTile> localeTileProvider,
             Provider<MonoToggleTile> monoToggleTileProvider,
-            Provider<NavBarTile> navbarTileProvider) {
+            Provider<NavBarTile> navbarTileProvider,
+            Provider<PulseTile> pulseTileProvider) {
         mQsHostLazy = qsHostLazy;
         mWifiTileProvider = wifiTileProvider;
         mBluetoothTileProvider = bluetoothTileProvider;
@@ -237,6 +240,7 @@ public class QSFactoryImpl implements QSFactory {
         mLocaleTileProvider = localeTileProvider;
         mMonoToggleTileProvider = monoToggleTileProvider;
         mNavBarTileProvider = navbarTileProvider;
+        mPulseTileProvider = pulseTileProvider;
     }
 
     public QSTile createTile(String tileSpec) {
@@ -345,6 +349,8 @@ public class QSFactoryImpl implements QSFactory {
                 return mMonoToggleTileProvider.get();
             case "navbar":
                 return mNavBarTileProvider.get();
+            case "pulse":
+                return mPulseTileProvider.get();
         }
 
         // Custom tiles
