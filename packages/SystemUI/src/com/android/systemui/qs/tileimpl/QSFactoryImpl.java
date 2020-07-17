@@ -59,6 +59,7 @@ import com.android.systemui.qs.tiles.OnTheGoTile;
 import com.android.systemui.qs.tiles.PowerMenuTile;
 import com.android.systemui.qs.tiles.PowerShareTile;
 import com.android.systemui.qs.tiles.ProfilesTile;
+import com.android.systemui.qs.tiles.PulseTile;
 import com.android.systemui.qs.tiles.ReadingModeTile;
 import com.android.systemui.qs.tiles.RebootTile;
 import com.android.systemui.qs.tiles.RotationLockTile;
@@ -117,6 +118,7 @@ public class QSFactoryImpl implements QSFactory {
     private final Provider<PowerMenuTile> mPowerMenuTileProvider;
     private final Provider<PowerShareTile> mPowerShareTileProvider;
     private final Provider<ProfilesTile> mProfilesTileProvider;
+    private final Provider<PulseTile> mPulseTileProvider;
     private final Provider<ReadingModeTile> mReadingModeTileProvider;
     private final Provider<SyncTile> mSyncTileProvider;
     private final Provider<UsbTetherTile> mUsbTetherTileProvider;
@@ -171,6 +173,7 @@ public class QSFactoryImpl implements QSFactory {
             Provider<PowerMenuTile> powerMenuTileProvider,
             Provider<PowerShareTile> powerShareTileProvider,
             Provider<ProfilesTile> profilesTileProvider,
+            Provider<PulseTile> pulseTileProvider,
             Provider<ReadingModeTile> readingModeTileProvider,
             Provider<SyncTile> syncTileProvider,
             Provider<UsbTetherTile> usbTetherTileProvider,
@@ -221,6 +224,7 @@ public class QSFactoryImpl implements QSFactory {
         mPowerMenuTileProvider = powerMenuTileProvider;
         mPowerShareTileProvider = powerShareTileProvider;
         mProfilesTileProvider = profilesTileProvider;
+        mPulseTileProvider = pulseTileProvider;
         mReadingModeTileProvider = readingModeTileProvider;
         mSyncTileProvider = syncTileProvider;
         mUsbTetherTileProvider = usbTetherTileProvider;
@@ -311,6 +315,8 @@ public class QSFactoryImpl implements QSFactory {
                 return mPowerShareTileProvider.get();
             case "profiles":
                 return mProfilesTileProvider.get();
+            case "pulse":
+                return mPulseTileProvider.get();
             case "reading_mode":
                 return mReadingModeTileProvider.get();
             case "sync":
