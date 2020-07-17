@@ -280,4 +280,11 @@
     <!-- ADB over network QS tile -->
     <string name="quick_settings_network_adb_label">ADB over network</string>
     <string name="quick_settings_network_adb_no_network">no network</string>
+
+    <!-- NavBar Pulse Tile -->
+    <string name="quick_settings_pulse">Pulse</string>
+    <string name="quick_settings_pulse_off">Pulse off</string>
+    <string name="quick_settings_pulse_on">Pulse on</string>
+    <string name="quick_settings_pulse_changed_off">Pulse turned off.</string>
+    <string name="quick_settings_pulse_changed_on">Pulse turned on.</string>
 </resources>
