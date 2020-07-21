@@ -293,4 +293,11 @@
 
     <!-- FPS view text placeholder -->
     <string name="fps_text_placeholder">FPS: <xliff:g id="fps" example="90">%1$d</xliff:g></string>
+
+    <!-- NavBar Tile -->
+    <string name="quick_settings_navbar">Navigation</string>
+    <string name="quick_settings_navbar_off">Navigation off</string>
+    <string name="quick_settings_navbar_on">Navigation on</string>
+    <string name="quick_settings_navbar_changed_off">Navigation turned off</string>
+    <string name="quick_settings_navbar_changed_on">Navigation turned on</string>
 </resources>
