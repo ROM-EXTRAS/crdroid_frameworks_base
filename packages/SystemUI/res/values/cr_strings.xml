@@ -269,4 +269,11 @@
 
     <!-- Name of the nfc status bar icon. -->
     <string name="status_bar_nfc">NFC</string>
+
+    <!-- NavBar Tile -->
+    <string name="quick_settings_navbar">Navigation</string>
+    <string name="quick_settings_navbar_off">Navigation off</string>
+    <string name="quick_settings_navbar_on">Navigation on</string>
+    <string name="quick_settings_navbar_changed_off">Navigation turned off</string>
+    <string name="quick_settings_navbar_changed_on">Navigation turned on</string>
 </resources>
