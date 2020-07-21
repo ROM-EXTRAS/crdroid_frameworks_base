@@ -52,6 +52,7 @@ import com.android.systemui.qs.tiles.LocaleTile;
 import com.android.systemui.qs.tiles.LocationTile;
 import com.android.systemui.qs.tiles.LiveDisplayTile;
 import com.android.systemui.qs.tiles.MonoToggleTile;
+import com.android.systemui.qs.tiles.NavBarTile;
 import com.android.systemui.qs.tiles.NfcTile;
 import com.android.systemui.qs.tiles.NightDisplayTile;
 import com.android.systemui.qs.tiles.OnTheGoTile;
@@ -134,6 +135,7 @@ public class QSFactoryImpl implements QSFactory {
     private final Provider<CompassTile> mCompassTileProvider;
     private final Provider<LocaleTile> mLocaleTileProvider;
     private final Provider<MonoToggleTile> mMonoToggleTileProvider;
+    private final Provider<NavBarTile> mNavBarTileProvider;
     private final Provider<OnTheGoTile> mOnTheGoTileProvider;
 
     private final Lazy<QSHost> mQsHostLazy;
@@ -187,6 +189,7 @@ public class QSFactoryImpl implements QSFactory {
             Provider<CompassTile> compassTileProvider,
             Provider<LocaleTile> localeTileProvider,
             Provider<MonoToggleTile> monoToggleTileProvider,
+            Provider<NavBarTile> navbarTileProvider,
             Provider<OnTheGoTile> onTheGoTileProvider) {
         mQsHostLazy = qsHostLazy;
         mWifiTileProvider = wifiTileProvider;
@@ -236,6 +239,7 @@ public class QSFactoryImpl implements QSFactory {
         mCompassTileProvider = compassTileProvider;
         mLocaleTileProvider = localeTileProvider;
         mMonoToggleTileProvider = monoToggleTileProvider;
+        mNavBarTileProvider = navbarTileProvider;
         mOnTheGoTileProvider = onTheGoTileProvider;
     }
 
@@ -343,6 +347,8 @@ public class QSFactoryImpl implements QSFactory {
                 return mLocaleTileProvider.get();
             case "mono":
                 return mMonoToggleTileProvider.get();
+            case "navbar":
+                return mNavBarTileProvider.get();
             case "onthego":
                 return mOnTheGoTileProvider.get();
         }
