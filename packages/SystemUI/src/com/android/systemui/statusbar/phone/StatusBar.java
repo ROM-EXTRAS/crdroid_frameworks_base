@@ -49,8 +49,6 @@ import static com.android.systemui.statusbar.phone.BarTransitions.MODE_WARNING;
 import static com.android.systemui.statusbar.phone.BarTransitions.TransitionMode;
 
 import android.animation.TimeInterpolator;
-import android.annotation.ChaosLab.Classification;
-import android.annotation.ChaosLab;
 import android.annotation.NonNull;
 import android.annotation.Nullable;
 import android.app.Activity;
@@ -1251,7 +1249,6 @@ public class StatusBar extends SystemUI implements DemoMode,
     // ================================================================================
     // Constructing the view
     // ================================================================================
-    @ChaosLab(name="GestureAnywhere", classification=Classification.CHANGE_CODE)
     protected void makeStatusBarView(@Nullable RegisterStatusBarResult result) {
         final Context context = mContext;
         updateDisplaySize(); // populates mDisplayMetrics
@@ -4830,7 +4827,6 @@ public class StatusBar extends SystemUI implements DemoMode,
 
     private final Optional<Recents> mRecentsOptional;
 
-    @ChaosLab(name="GestureAnywhere", classification=Classification.NEW_FIELD)
     protected GestureAnywhereView mGestureAnywhereView;
 
     protected NotificationShelf mNotificationShelf;
@@ -5372,7 +5368,6 @@ public class StatusBar extends SystemUI implements DemoMode,
         ThemeAccentUtils.setKillNotchOverlay(mOverlayManager, mKillNotch);
     }
 
-    @ChaosLab(name="GestureAnywhere", classification=Classification.NEW_METHOD)
     protected void addGestureAnywhereView() {
         mGestureAnywhereView = (GestureAnywhereView)View.inflate(
                 mContext, R.layout.gesture_anywhere_overlay, null);
@@ -5380,13 +5375,11 @@ public class StatusBar extends SystemUI implements DemoMode,
         mGestureAnywhereView.setStatusBar(this);
     }
 
-    @ChaosLab(name="GestureAnywhere", classification=Classification.NEW_METHOD)
     protected void removeGestureAnywhereView() {
         if (mGestureAnywhereView != null)
             mWindowManager.removeView(mGestureAnywhereView);
     }
 
-    @ChaosLab(name="GestureAnywhere", classification=Classification.NEW_METHOD)
     protected WindowManager.LayoutParams getGestureAnywhereViewLayoutParams(int gravity) {
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams(
                 LayoutParams.WRAP_CONTENT,
