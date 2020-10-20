@@ -279,7 +279,8 @@ public class FODCircleView extends ImageView implements TunerService.Tunable, Co
 
         @Override
         public void onStartedWakingUp() {
-            if (mUpdateMonitor.isFingerprintDetectionRunning()) {
+            if (!mScreenTurnedOn &&
+                    mUpdateMonitor.isFingerprintDetectionRunning()) {
                 show();
             }
         }
