@@ -220,6 +220,10 @@ public class KeyguardStatusView extends GridLayout implements
         updateWeatherView();
     }
 
+    public KeyguardSliceView getKeyguardSliceView() {
+        return mKeyguardSlice;
+    }
+
     /**
      * Moves clock, adjusting margins when slice content changes.
      */
