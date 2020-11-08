@@ -147,4 +147,6 @@
 
     <!-- Whether to show settings for hiding notch fill -->
     <bool name="config_showHideNotchSettings">false</bool>
+
+    <bool name="config_has_Soli">false</bool>
 </resources>
