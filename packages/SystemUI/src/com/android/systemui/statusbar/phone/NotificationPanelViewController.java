@@ -354,6 +354,7 @@ public class NotificationPanelViewController extends PanelViewController {
     private KeyguardStatusBarViewController mKeyguardStatusBarViewController;
     @VisibleForTesting QS mQs;
     private FrameLayout mQsFrame;
+    private KeyguardStatusView mKeyguardStatusView;
     private KeyguardStatusViewController mKeyguardStatusViewController;
     private LockIconViewController mLockIconViewController;
     private NotificationsQuickSettingsContainer mNotificationContainerParent;
@@ -1064,6 +1065,10 @@ public class NotificationPanelViewController extends PanelViewController {
      */
     public boolean hasCustomClock() {
         return mKeyguardStatusViewController.hasCustomClock();
+    }
+
+    public KeyguardStatusView getKeyguardStatusView() {
+        return mKeyguardStatusView;
     }
 
     private void setStatusBar(StatusBar bar) {

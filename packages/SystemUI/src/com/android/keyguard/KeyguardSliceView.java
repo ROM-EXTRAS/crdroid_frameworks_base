@@ -240,6 +240,10 @@ public class KeyguardSliceView extends LinearLayout {
         }
     }
 
+    public View getTitleView() {
+        return mTitle;
+    }
+
     /**
      * Runnable that gets invoked every time the title or the row visibility changes.
      * @param contentChangeListener The listener.

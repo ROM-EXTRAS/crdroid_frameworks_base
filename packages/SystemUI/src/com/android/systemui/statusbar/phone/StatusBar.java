@@ -2046,6 +2046,13 @@ public class StatusBar extends SystemUI implements
         return mDozeServiceHost.isPulsing();
     }
 
+    public boolean isDoubleTapOnMusicTicker(float screenX, float screenY) {
+	         if (mDozeServiceHost != null) {
+		                 return mDozeServiceHost.isDoubleTapOnMusicTicker(screenX, screenY);
+			        }
+	        return false;
+           }
+
     @Nullable
     public View getAmbientIndicationContainer() {
         return mAmbientIndicationContainer;
