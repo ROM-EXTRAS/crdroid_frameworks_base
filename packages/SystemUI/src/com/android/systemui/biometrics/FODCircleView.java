@@ -225,9 +225,11 @@ public class FODCircleView extends ImageView implements TunerService.Tunable, Co
             mIsDreaming = dreaming;
             updateAlpha();
 
-            if (mIsKeyguard && mIsBiometricRunning) {
+            if (mIsKeyguard && mUpdateMonitor.isFingerprintDetectionRunning()) {
                 show();
                 updateAlpha();
+            } else {
+                hide();
             }
 
             if (dreaming) {
@@ -254,12 +256,14 @@ public class FODCircleView extends ImageView implements TunerService.Tunable, Co
         @Override
         public void onKeyguardBouncerChanged(boolean isBouncer) {
             mIsBouncer = isBouncer;
-            if (mIsBiometricRunning) {
+            if (mUpdateMonitor.isFingerprintDetectionRunning()) {
                 if (isPinOrPattern(mUpdateMonitor.getCurrentUser()) || !isBouncer) {
                     show();
                 } else {
                     hide();
                 }
+            } else {
+                hide();
             }
         }
 
@@ -275,14 +279,14 @@ public class FODCircleView extends ImageView implements TunerService.Tunable, Co
 
         @Override
         public void onStartedWakingUp() {
-            if (mIsBiometricRunning) {
+            if (mUpdateMonitor.isFingerprintDetectionRunning()) {
                 show();
             }
         }
 
         @Override
         public void onScreenTurnedOn() {
-            if (mIsBiometricRunning) {
+            if (mUpdateMonitor.isFingerprintDetectionRunning()) {
                 if (!mFodGestureEnable) {
                     show();
                 } else if (mPressPending) {
