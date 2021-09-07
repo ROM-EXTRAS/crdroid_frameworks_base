@@ -547,12 +547,11 @@ public class FODCircleView extends ImageView implements TunerService.Tunable, Co
         setDim(true);
         dispatchPress();
 
-        if (mFODAnimation != null && mIsRecognizingAnimEnabled) {
-            mHandler.post(() -> mFODAnimation.showFODanimation());
-        }
-
         setImageDrawable(null);
         invalidate();
+        if (mFODAnimation != null && mIsRecognizingAnimEnabled) {
+            mFODAnimation.showFODanimation();
+        }
     }
 
     public void hideCircle() {
@@ -564,6 +563,7 @@ public class FODCircleView extends ImageView implements TunerService.Tunable, Co
         dispatchRelease();
         setDim(false);
 
+        setKeepScreenOn(false);
         if (mFODAnimation != null && mIsRecognizingAnimEnabled) {
             mHandler.post(() -> mFODAnimation.hideFODanimation());
         }
@@ -595,6 +595,8 @@ public class FODCircleView extends ImageView implements TunerService.Tunable, Co
         if (mIsKeyguard && !mIsBiometricRunning) {
             return;
         }
+
+        setImageResource(ICON_STYLES[mSelectedIcon]);
 
         updatePosition();
 
@@ -670,11 +672,10 @@ public class FODCircleView extends ImageView implements TunerService.Tunable, Co
         if (mIsDreaming) {
             mParams.x += mDreamingOffsetX;
             mParams.y += mDreamingOffsetY;
-        }
-
-        if (mFODAnimation != null && mIsRecognizingAnimEnabled) {
-            mFODAnimation.updateParams(mParams.y);
-        }
+	    if (mFODAnimation != null && mIsRecognizingAnimEnabled) {
+		mFODAnimation.updateParams(mParams.y);
+            }
+	}
 
         mWindowManager.updateViewLayout(this, mParams);
 
