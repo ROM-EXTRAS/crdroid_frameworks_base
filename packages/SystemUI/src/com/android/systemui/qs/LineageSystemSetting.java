@@ -38,7 +38,7 @@ public abstract class LineageSystemSetting extends ContentObserver implements Li
 
     protected abstract void handleValueChanged(int value, boolean observedChange);
 
-    public SystemSetting(Context context, Handler handler, String settingName) {
+    public LineageSystemSetting(Context context, Handler handler, String settingName) {
         super(handler);
         mContext = context;
         mSettingName = settingName;
