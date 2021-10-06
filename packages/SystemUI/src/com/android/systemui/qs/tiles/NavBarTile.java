@@ -48,7 +48,7 @@ public class NavBarTile extends QSTileImpl<BooleanState> {
     public NavBarTile(QSHost host) {
         super(host);
 
-        mSetting = new LineageSystemSetting(mContext, mHandler, System.FORCE_SHOW_NAVBAR) {
+        mSetting = new LineageSystemSetting(mContext, mHandler, LineageSettings.System.FORCE_SHOW_NAVBAR) {
             @Override
             protected void handleValueChanged(int value, boolean observedChange) {
                 handleRefreshState(value);
@@ -73,8 +73,8 @@ public class NavBarTile extends QSTileImpl<BooleanState> {
     }
 
     private void setEnabled(boolean enabled) {
-        Settings.System.putInt(mContext.getContentResolver(),
-                Settings.System.FORCE_SHOW_NAVBAR,
+        LineageSettings.System.putInt(mContext.getContentResolver(),
+                LineageSettings.System.FORCE_SHOW_NAVBAR,
                 enabled ? 1 : 0);
     }
 
