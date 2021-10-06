@@ -23,12 +23,14 @@ import android.provider.Settings.System;
 import android.service.quicksettings.Tile;
 
 import com.android.systemui.plugins.qs.QSTile.BooleanState;
-import com.android.systemui.qs.SystemSetting;
+import com.android.systemui.qs.LineageSystemSetting;
 import com.android.systemui.qs.QSHost;
 import com.android.systemui.qs.tileimpl.QSTileImpl;
 import com.android.systemui.R;
 
 import com.android.internal.logging.nano.MetricsProto.MetricsEvent;
+
+import lineageos.providers.LineageSettings;
 
 import javax.inject.Inject;
 
@@ -40,15 +42,15 @@ public class NavBarTile extends QSTileImpl<BooleanState> {
     private static final Intent NAVBAR_SETTINGS =
             new Intent("android.settings.NAVBAR_SETTINGS");
 
-    private final SystemSetting mSetting;
+    private final LineageSystemSetting mSetting;
 
     @Inject
     public NavBarTile(QSHost host) {
         super(host);
 
-        mSetting = new SystemSetting(mContext, mHandler, System.FORCE_SHOW_NAVBAR) {
+        mSetting = new LineageSystemSetting(mContext, mHandler, System.FORCE_SHOW_NAVBAR) {
             @Override
-            protected void handleValueChanged(int value) {
+            protected void handleValueChanged(int value, boolean observedChange) {
                 handleRefreshState(value);
             }
         };
