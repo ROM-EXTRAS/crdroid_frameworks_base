@@ -34,8 +34,7 @@ import com.android.systemui.plugins.ActivityStarter;
 import com.android.systemui.plugins.qs.QSTile.BooleanState;
 import com.android.systemui.qs.QSHost;
 import com.android.systemui.qs.tileimpl.QSTileImpl;
-import com.android.systemui.statusbar.phone.UnlockMethodCache;
-import com.android.systemui.statusbar.policy.KeyguardMonitor;
+import com.android.systemui.statusbar.policy.KeyguardStateController;
 
 import lineageos.providers.LineageSettings;
 import org.lineageos.internal.logging.LineageMetricsLogger;
@@ -50,8 +49,8 @@ import javax.inject.Inject;
 public class AdbOverNetworkTile extends QSTileImpl<BooleanState> {
 
     private boolean mListening;
-    private final KeyguardMonitor mKeyguardMonitor;
-    private final KeyguardMonitorCallback mKeyguardCallback = new KeyguardMonitorCallback();
+    private final KeyguardStateController mKeyguardStateController;
+    private final KeyguardStateControllerCallback mKeyguardCallback = new KeyguardStateControllerCallback();
 
     private final ConnectivityManager mConnectivityManager;
 
@@ -63,7 +62,7 @@ public class AdbOverNetworkTile extends QSTileImpl<BooleanState> {
     @Inject
     public AdbOverNetworkTile(QSHost host) {
         super(host);
-        mKeyguardMonitor = Dependency.get(KeyguardMonitor.class);
+        mKeyguardStateController = Dependency.get(KeyguardStateController.class);
         mConnectivityManager = mContext.getSystemService(ConnectivityManager.class);
     }
 
@@ -74,7 +73,7 @@ public class AdbOverNetworkTile extends QSTileImpl<BooleanState> {
 
     @Override
     protected void handleClick() {
-        if (mKeyguardMonitor.isSecure() && !mKeyguardMonitor.canSkipBouncer()) {
+        if (mKeyguardStateController.isMethodSecure() && !mKeyguardStateController.canDismissLockScreen()) {
             Dependency.get(ActivityStarter.class)
                     .postQSRunnableDismissingKeyguard(this::toggleAction);
         } else {
@@ -159,17 +158,17 @@ public class AdbOverNetworkTile extends QSTileImpl<BooleanState> {
                 mContext.getContentResolver().registerContentObserver(
                         Settings.Global.getUriFor(Settings.Global.ADB_ENABLED),
                         false, mObserver);
-                mKeyguardMonitor.addCallback(mKeyguardCallback);
+                mKeyguardStateController.addCallback(mKeyguardCallback);
                 mConnectivityManager.registerDefaultNetworkCallback(mNetworkCallback);
             } else {
                 mContext.getContentResolver().unregisterContentObserver(mObserver);
-                mKeyguardMonitor.removeCallback(mKeyguardCallback);
+                mKeyguardStateController.removeCallback(mKeyguardCallback);
                 mConnectivityManager.unregisterNetworkCallback(mNetworkCallback);
             }
         }
     }
 
-    private class KeyguardMonitorCallback implements KeyguardMonitor.Callback {
+    private class KeyguardStateControllerCallback implements KeyguardStateController.Callback {
         @Override
         public void onKeyguardShowingChanged() {
             refreshState();
