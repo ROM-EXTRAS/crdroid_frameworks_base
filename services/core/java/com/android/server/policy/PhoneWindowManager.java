@@ -762,7 +762,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
             | KeyEvent.FLAG_FROM_SYSTEM | KeyEvent.FLAG_VIRTUAL_HARD_KEY;
 
     private LineageHardwareManager mLineageHardware;
-    private boolean mGaEnabled;
 
     private class PolicyHandler extends Handler {
         @Override
@@ -987,9 +986,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     UserHandle.USER_ALL);
             resolver.registerContentObserver(Settings.System.getUriFor(
                     Settings.System.THREE_FINGER_GESTURE), false, this,
-                    UserHandle.USER_ALL);
-            resolver.registerContentObserver(LineageSettings.System.getUriFor(
-                    LineageSettings.System.GESTURE_ANYWHERE_ENABLED), false, this,
                     UserHandle.USER_ALL);
 
             updateSettings();
@@ -2598,12 +2594,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                     Settings.System.THREE_FINGER_GESTURE, 0, UserHandle.USER_CURRENT) == 1;
             enableSwipeThreeFingerGesture(threeFingerGesture);
 
-            // GestureAnywhere Feature
-            mGaEnabled = LineageSettings.System.getIntForUser(resolver,
-                    LineageSettings.System.GESTURE_ANYWHERE_ENABLED, 0,
-                    UserHandle.USER_CURRENT) == 1;
-            refreshGA(mGaEnabled);
-
             final boolean ANBIEnabled = Settings.System.getIntForUser(resolver,
                     Settings.System.ANBI_ENABLED, 0, UserHandle.USER_CURRENT) == 1;
             if (mANBIHandler != null) {
@@ -2673,14 +2663,6 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 && mWakeGestureListener.isSupported();
     }
 
-    private void refreshGA(boolean mGaEnabled) {
-        if (mGaEnabled) {
-            LineageSettings.System.putInt(mContext.getContentResolver(),
-                LineageSettings.System.GESTURE_ANYWHERE_SHOW_TRIGGER, 1);
-            LineageSettings.System.putInt(mContext.getContentResolver(),
-                LineageSettings.System.GESTURE_ANYWHERE_SHOW_TRIGGER, 0);
-        }
-    }
     /** {@inheritDoc} */
     @Override
     public int checkAddPermission(int type, boolean isRoundedCornerOverlay, String packageName,
