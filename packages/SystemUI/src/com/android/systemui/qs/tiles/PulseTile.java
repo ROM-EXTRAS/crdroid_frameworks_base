@@ -48,7 +48,7 @@ public class PulseTile extends QSTileImpl<BooleanState> {
 
         mSetting = new SecureSetting(mContext, mHandler, Secure.NAVBAR_PULSE_ENABLED) {
             @Override
-            protected void handleValueChanged(int value) {
+            protected void handleValueChanged(int value, boolean observedChange) {
                 handleRefreshState(value);
             }
         };
