@@ -106,7 +106,7 @@ public class LocationTile extends QSTileImpl<BooleanState> {
 
     @Override
     protected void handleClick() {
-        if (mKeyguard.isSecure() && mKeyguard.isShowing()) {
+        if (mKeyguard.isMethodSecure() && mKeyguard.isShowing()) {
             mActivityStarter.postQSRunnableDismissingKeyguard(() -> {
                 mHost.openPanels();
                 switchMode();
