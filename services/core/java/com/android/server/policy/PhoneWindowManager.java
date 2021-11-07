@@ -56,7 +56,6 @@ import static android.view.WindowManager.LayoutParams.TYPE_NAVIGATION_BAR_PANEL;
 import static android.view.WindowManager.LayoutParams.TYPE_NOTIFICATION_SHADE;
 import static android.view.WindowManager.LayoutParams.TYPE_PRESENTATION;
 import static android.view.WindowManager.LayoutParams.TYPE_PRIVATE_PRESENTATION;
-import static android.view.WindowManager.LayoutParams.TYPE_ONEHAND_OVERLAY;
 import static android.view.WindowManager.LayoutParams.TYPE_QS_DIALOG;
 import static android.view.WindowManager.LayoutParams.TYPE_STATUS_BAR;
 import static android.view.WindowManager.LayoutParams.TYPE_TOAST;
