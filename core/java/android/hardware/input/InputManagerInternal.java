@@ -78,10 +78,4 @@ public abstract class InputManagerInternal {
      */
     public abstract boolean transferTouchFocus(@NonNull IBinder fromChannelToken,
             @NonNull IBinder toChannelToken);
-
-    /**
-     * updatePointerMappingParameters
-     */
-    public abstract void updatePointerMappingParameters(int offsetX, int offsetY, float scale,
-            int width, int height);
 }

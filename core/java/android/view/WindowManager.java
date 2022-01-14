@@ -1248,12 +1248,6 @@ public interface WindowManager extends ViewManager {
         public static final int INVALID_WINDOW_TYPE = -1;
 
         /**
-         * Window type: Windows for OneHandOperation.
-         * @hide
-        */
-        public static final int TYPE_ONEHAND_OVERLAY = LAST_SYSTEM_WINDOW - 3;
-
-        /**
          * @hide
          */
         @IntDef(prefix = "TYPE_", value = {
