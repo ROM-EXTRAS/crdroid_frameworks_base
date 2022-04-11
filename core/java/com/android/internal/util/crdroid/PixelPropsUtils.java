@@ -34,17 +34,12 @@ public class PixelPropsUtils {
 
     private static final Map<String, Object> propsToChange;
     private static final Map<String, Object> propsToChangePixel5;
-    private static final Map<String, Object> propsToChangePixel6;
     private static final Map<String, Object> propsToChangePixelXL;
     private static final Map<String, ArrayList<String>> propsToKeep;
 
     private static final String[] extraPackagesToChange = {
             "com.android.chrome",
             "com.breel.wallpapers20"
-    };
-
-    private static final String[] packagesToChangePixel6 = {
-            "com.google.android.gms"
     };
 
     private static final String[] packagesToChangePixelXL = {
@@ -159,9 +154,7 @@ public class PixelPropsUtils {
         if (packageName.startsWith("com.google.")
                 || Arrays.asList(extraPackagesToChange).contains(packageName)) {
 
-            if (Arrays.asList(packagesToChangePixel6).contains(packageName)) {
-                propsToChange.putAll(propsToChangePixel6);
-            } else if (Arrays.asList(packagesToChangePixelXL).contains(packageName)) {
+            if (Arrays.asList(packagesToChangePixelXL).contains(packageName)) {
                 propsToChange.putAll(propsToChangePixelXL);
             } else {
                 propsToChange.putAll(propsToChangePixel5);
