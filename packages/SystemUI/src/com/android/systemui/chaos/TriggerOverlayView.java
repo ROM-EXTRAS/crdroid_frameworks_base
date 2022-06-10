@@ -72,6 +72,7 @@ public abstract class TriggerOverlayView extends FrameLayout {
 
     protected void setPosition(int gravity) {
         mLayoutParams = (WindowManager.LayoutParams) getLayoutParams();
+        mLayoutParams.privateFlags |= PRIVATE_FLAG_TRUSTED_OVERLAY;
         mLayoutParams.gravity = Gravity.TOP | gravity;
         mWM.updateViewLayout(this, mLayoutParams);
         invalidate();
@@ -87,6 +88,7 @@ public abstract class TriggerOverlayView extends FrameLayout {
 
     protected void setTopPercentage(float value) {
         mLayoutParams = (WindowManager.LayoutParams)this.getLayoutParams();
+        mLayoutParams.privateFlags |= PRIVATE_FLAG_TRUSTED_OVERLAY;
         mTriggerTop = (int)(mViewHeight * value);
         mLayoutParams.y = mTriggerTop;
         mLayoutParams.height = mTriggerBottom;
@@ -98,6 +100,7 @@ public abstract class TriggerOverlayView extends FrameLayout {
 
     protected void setBottomPercentage(float value) {
         mLayoutParams = (WindowManager.LayoutParams)this.getLayoutParams();
+        mLayoutParams.privateFlags |= PRIVATE_FLAG_TRUSTED_OVERLAY;
         mTriggerBottom = (int)(mViewHeight * value);
         mLayoutParams.height = mTriggerBottom;
         try {
@@ -108,6 +111,7 @@ public abstract class TriggerOverlayView extends FrameLayout {
 
     protected void setTriggerWidth(int value) {
         mLayoutParams = (WindowManager.LayoutParams)this.getLayoutParams();
+        mLayoutParams.privateFlags |= PRIVATE_FLAG_TRUSTED_OVERLAY;
         mTriggerWidth = value;
         mLayoutParams.width = mTriggerWidth;
         try {
@@ -118,6 +122,7 @@ public abstract class TriggerOverlayView extends FrameLayout {
 
     protected void expandFromTriggerRegion() {
         mLayoutParams = (WindowManager.LayoutParams) getLayoutParams();
+        mLayoutParams.privateFlags |= PRIVATE_FLAG_TRUSTED_OVERLAY;
         mLayoutParams.y = 0;
         Rect r = new Rect();
         getWindowVisibleDisplayFrame(r);
