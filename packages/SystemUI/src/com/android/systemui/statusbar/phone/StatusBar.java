@@ -5393,7 +5393,7 @@ public class StatusBar extends SystemUI implements DemoMode,
                 | WindowManager.LayoutParams.FLAG_SPLIT_TOUCH,
                 PixelFormat.TRANSLUCENT);
         lp.privateFlags |= WindowManager.LayoutParams.PRIVATE_FLAG_NO_MOVE_ANIMATION;
-        lp.privateFlags |= WindowManager.LayoutParams.TYPE_TRUSTED_APPLICATION_OVERLAY;
+        lp.privateFlags |= WindowManager.LayoutParams.PRIVATE_FLAG_TRUSTED_OVERLAY;
         lp.gravity = Gravity.TOP | gravity;
         lp.setTitle("GestureAnywhereView");
 
