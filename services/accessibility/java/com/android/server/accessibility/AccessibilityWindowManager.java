@@ -726,7 +726,7 @@ public class AccessibilityWindowManager {
                 case WindowManager.LayoutParams.TYPE_SYSTEM_OVERLAY:
                 case WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY:
                 case WindowManager.LayoutParams.TYPE_SCREENSHOT:
-                case WindowManager.LayoutParams.TYPE_TRUSTED_APPLICATION_OVERLAY: {
+                case WindowManager.LayoutParams.PRIVATE_FLAG_TRUSTED_OVERLAY: {
                     return AccessibilityWindowInfo.TYPE_SYSTEM;
                 }
 
